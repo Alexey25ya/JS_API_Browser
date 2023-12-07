@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="article-list">
+        <article class="article-item">
+        </article>
+    </div>
+    <button class="add-btn">Добавить статью</button>
+    <script>
+        // Вы создаете веб-страницу для отображения списка статей. Каждая статья состоит из заголовка и текста. Вам необходимо использовать Bootstrap для стилизации элементов.
+        // Используйте Bootstrap, чтобы стилизовать элементы:
+        // Заголовок статьи (<h2>)
+        // Текст статьи (<p>)
+        // Кнопки "Добавить статью", "Удалить" и "Редактировать".
+        // Создайте начальный список статей, который будет загружаться при загрузке страницы. Используйте JSON-данные для определения заголовков и текстов статей.
+        // Позвольте пользователю добавлять новые статьи. При нажатии на кнопку "Добавить статью" должна появиться новая статья с заголовком "Новая статья" и текстом "Введите содержание статьи...".
+        // * Реализуйте функциональность удаления статей. При нажатии на кнопку "Удалить" соответствующая статья должна быть удалена из списка.
+        // * Реализуйте функциональность редактирования статей. При нажатии на кнопку "Редактировать" пользователь должен иметь возможность изменить заголовок и текст статьи. Используйте всплывающее окно или prompt для ввода новых данных.
+        // * Все изменения (добавление, удаление, редактирование) должны быть сохранены в локальное хранилище браузера, чтобы они сохранялись после перезагрузки страницы.
+
+        const articleList = document.querySelector('.article-list');
+        const addBtn = document.querySelector('.add-btn');
+
+        document.addEventListener('DOMContentLoaded', (e) => {
+            if (localStorage.getItem('articles')) {
+                articleList.innerHTML = getItem('articles');
+            } else {
+                articlesData.forEach((article) => {
+                    createArticles(article);
+                });
+            }
+        });
+
+        createArticles = (article) => {
+            const articleEl = document.createElement('article');
+            articleEl.className = 'article-item';
+            articleEl.innerHTML = `<h2 class="article-title">${article.title}</h2>
+<p class="article-text">${article.content}</p>
+<button class="delete-btn">Удалить статью</button>
+<button class="edit-btn">Редактировать статью</button>`;
+            articleList.appendChild(articleEl);
+            //добавить event list на кнопки
+        };
+
+        addBtn.addEventListener('click', () => {
+            const newArticle = {
+                title: 'Новая статья',
+                content: 'Введите содержание статьи...',
+            };
+            createArticles(newArticle);
+            localStorage.setItem('articles', articleList.innerHTML);
+        });
+    </script>
+</body>
+
+</html>
