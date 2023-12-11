@@ -1,0 +1,61 @@
+Создайте простое модальное окно, которое появляется при клике на кнопку "Открыть модальное окно" и закрывается при клике
+на кнопку "Закрыть". Модальное окно должно содержать заголовок "Модальное окно" и кнопку для закрытия.
+* Модальное окно должно плавно появляться и исчезать при открытии и закрытии.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Window</title>
+    <style>
+        body {
+            padding: 50px;
+        }
+
+        .modal {
+            padding: 20px;
+            border: 1px solid teal;
+            width: 400px;
+            background-color: white;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s ease;
+        }
+
+        .hidden {
+            /* display: none; */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s, visibility 0.8s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="open">Открыть модальное окно</button>
+    <div class="modal hidden">
+        <h2>Модальное окно</h2>
+        <p>Нажмите кнопку &quot;Закрыть&quot;, чтобы закрыть модальное окно!</p>
+        <button class="close">Закрыть</button>
+    </div>
+    <script>
+        const openBtn = document.querySelector('.open');
+        const modal = document.querySelector('.modal');
+        const closeBtn = document.querySelector('.close');
+
+        openBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>

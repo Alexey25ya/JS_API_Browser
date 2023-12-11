@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+</head>
+
+<body>
+    <main>
+        <h1 class="page-title">Cлайдер</h1>
+        <div class="slider-container">
+            <div class="slider">
+                <img src="https://thumbs.dreamstime.com/b/welsh-corgi-pembroke-lying-back-isolated-black-53262289.jpg"
+                    alt="img">
+                <img src="https://thumbs.dreamstime.com/b/adriatic-sea-scenic-view-14388029.jpg" alt="img">
+                <img src="https://thumbs.dreamstime.com/b/four-corgi-sunset-sitting-park-under-tree-rays-light-85779848.jpg"
+                    alt="img">
+                <img src="https://thumbs.dreamstime.com/b/scenic-view-ocean-harbor-colorful-village-vernazza-ci-cinque-terre-italy-34146582.jpg"
+                    alt="img">
+                <img src="https://thumbs.dreamstime.com/b/funny-face-welsh-corgi-pembroke-running-tongue-out-funny-face-welsh-corgi-pembroke-running-long-tongue-out-133013346.jpg"
+                    alt="img">
+            </div>
+            <button class="prev-button" aria-label="Посмотреть предыдущий слайд">&lt;</button>
+            <button class="next-button" aria-label="Посмотреть следующий слайд">&gt</button>
+        </div>
+        <nav class="dots">
+            <ul class="pagination">
+                <li><svg xmlns="http://www.w3.org/2000/svg" width="53" height="52" viewBox="0 0 53 52" fill="none">
+                        <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
+                    </svg><span class="pagination__number">1</span></li>
+                <li><svg xmlns="http://www.w3.org/2000/svg" width="53" height="52" viewBox="0 0 53 52" fill="none">
+                        <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
+                    </svg><span class="pagination__number">2</span></li>
+                <li><svg xmlns="http://www.w3.org/2000/svg" width="53" height="52" viewBox="0 0 53 52" fill="none">
+                        <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
+                    </svg><span class="pagination__number">3</span></li>
+                <li><svg xmlns="http://www.w3.org/2000/svg" width="53" height="52" viewBox="0 0 53 52" fill="none">
+                        <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
+                    </svg><span class="pagination__number">4</span></li>
+                </svg></li>
+                <li><svg xmlns="http://www.w3.org/2000/svg" width="53" height="52" viewBox="0 0 53 52" fill="none">
+                        <circle cx="26.5" cy="26" r="25.5" stroke="#CDA274" />
+                    </svg><span class="pagination__number">5</span></li>
+                </svg></li>
+            </ul>
+        </nav>
+    </main>
+
+    <style>
+        .page-title {
+            text-align: center;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .prev-button,
+        .next-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            color: white;
+        }
+
+        .prev-button {
+            left: 10px;
+        }
+
+        .next-button {
+            right: 10px;
+        }
+
+        .pagination {
+            margin: 51px auto 100px;
+            display: flex;
+            width: max-content;
+            gap: 20px;
+        }
+
+        .pagination li {
+            display: inline;
+            position: relative;
+        }
+
+        .pagination__number {
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            color: #292F36;
+            font-family: Jost;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 150%;
+            text-transform: capitalize;
+        }
+    </style>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
