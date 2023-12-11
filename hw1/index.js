@@ -58,6 +58,8 @@ const data =
         }
     ]
 
+
+
 // Создание элементов в соответствии с массивом
 createSchedule = (data, elem) => {
     data.forEach(element => {
@@ -74,16 +76,17 @@ createSchedule = (data, elem) => {
         const signUpButton = document.querySelector(`.sign_up${element.id}`)
         const currentParticipantsNew = document.querySelector(`.current${element.id}`)
         let counter = 0;
-        let currentNew = element.currentParticipants;
         // кнопка "Записаться"
         signUpButton.addEventListener('click', () => {
             counter++
             if (counter === 1) {
-                cancel(signUpButton, currentNew, currentParticipantsNew, element.id)
+                cancel(signUpButton, element.currentParticipants, currentParticipantsNew, element.id);
             }
             if (element.maxParticipants > currentParticipantsNew.textContent) {
                 currentParticipantsNew.textContent = Number(currentParticipantsNew.textContent) + 1;
                 element.currentParticipants = currentParticipantsNew.textContent;
+                localStorage.setItem('dataStorage', JSON.stringify(data));
+
             } else {
                 signUpButton.setAttribute('disabled', '')
             }
@@ -101,19 +104,12 @@ function cancel(signUpButton, current, currentParticipantsNew, id) {
     cancelButton.addEventListener('click', () => {
         signUpButton.removeAttribute('disabled', '')
         if (currentParticipantsNew.textContent > 0) {
-            currentParticipantsNew.textContent = currentParticipantsNew.textContent - 1
+            currentParticipantsNew.textContent = Number(currentParticipantsNew.textContent) - 1;
             current = currentParticipantsNew.textContent;
+            localStorage.setItem('dataStorage', JSON.stringify(data));
         }
     })
 }
 
 const head = document.querySelector('.head')
-// вызов функции создания расписания
 createSchedule(data, head);
-localStorage.setItem('dataStorage', JSON.stringify(data))
-
-
-
-
-
-
