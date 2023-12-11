@@ -80,7 +80,8 @@ createSchedule = (data, elem) => {
         signUpButton.addEventListener('click', () => {
             counter++
             if (counter === 1) {
-                cancel(signUpButton, element.currentParticipants, currentParticipantsNew, element.id);
+                cancel(signUpButton, currentParticipantsNew, element);
+
             }
             if (element.maxParticipants > currentParticipantsNew.textContent) {
                 currentParticipantsNew.textContent = Number(currentParticipantsNew.textContent) + 1;
@@ -96,16 +97,16 @@ createSchedule = (data, elem) => {
 
 
 // Создание кнопки и функции отмены записи
-function cancel(signUpButton, current, currentParticipantsNew, id) {
+function cancel(signUpButton, currentParticipantsNew, element) {
     const cancelButton = document.createElement('button');
-    cancelButton.className = `.cancelButton${id}`;
+    cancelButton.className = `.cancelButton${element.id}`;
     cancelButton.textContent = 'Отменить запись';
     signUpButton.insertAdjacentElement('afterend', cancelButton);
     cancelButton.addEventListener('click', () => {
         signUpButton.removeAttribute('disabled', '')
         if (currentParticipantsNew.textContent > 0) {
             currentParticipantsNew.textContent = Number(currentParticipantsNew.textContent) - 1;
-            current = currentParticipantsNew.textContent;
+            element.currentParticipants = currentParticipantsNew.textContent;
             localStorage.setItem('dataStorage', JSON.stringify(data));
         }
     })
